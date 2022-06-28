@@ -1,6 +1,6 @@
 function PercentOfNumbers(numofarr,maxnum) {
     const arrWinners = []
-    for( i=1 ;i<1000 ;i++){
+    for( i=0 ;i<100 ;i++){
     const numbers = [...new Array(numofarr)].map(() => Math.round(Math.random() * maxnum))
     // console.log(numbers)
     const counters = {}
@@ -12,13 +12,13 @@ function PercentOfNumbers(numofarr,maxnum) {
             counters[num]++;
         }
     }
-    // console.log(counters)
+    //   console.log(counters)
 
     const percents = {}
     for (let count in counters) {
         percents[count] = counters[count] / numofarr * 100 + "%"
     }
-    // console.log(percents)
+    //   console.log(percents)
 
     let max = 0;
     let maxKey = "";
@@ -30,18 +30,41 @@ function PercentOfNumbers(numofarr,maxnum) {
       
       }
     } 
-    // console.log(maxKey)
-    // console.log(max)
+      console.log(maxKey)
+      console.log(max)
     
     
     arrWinners.push(maxKey)
 
     }
     winners = arrWinners.map(Number)
-    winner = Math.max.apply(Math,winners)
-    console.log(arrWinners)
-    console.log(winner)
+    winTimes = {}
+    console.log(winners)
+    
 
+    for (let num of winners) {
+        if (winTimes[num] === undefined) {
+            winTimes[num] = 1
+        } else {
+            winTimes[num]++;
+        }
+    }
+     console.log(winTimes)
+
+
+    let winnerCount = 0;
+    let winner = "";
+   
+    for(let win in winTimes){
+        if(winTimes[win]> winnerCount){
+         winnerCount =winTimes[win]
+         winner= win
+        
+        }
+      } 
+       console.log(winnerCount)
+       console.log(winner)
+      
 
 //   for( i=1 ;i<10 ;i++){
 //    firstwin = 0
@@ -56,4 +79,4 @@ function PercentOfNumbers(numofarr,maxnum) {
 //   }
 
 }
-PercentOfNumbers(10000,100)
+PercentOfNumbers(10000,5)
